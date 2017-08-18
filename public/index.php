@@ -10,6 +10,9 @@ class index extends Pagina{
       parent::exibirHead();
       ?>
 <style>
+   h1{
+      text-align: center;
+   }
    .div-resumo{
       padding: 5px;
       background: #DDD;
@@ -32,6 +35,7 @@ class index extends Pagina{
         $noticias = $notDao->getAllNoticias();
         ?>
 <div class="container">
+   <h1>Ultimas notícias</h1>
    <div class="row">
       <div class="col-sm-12">
          <?php
