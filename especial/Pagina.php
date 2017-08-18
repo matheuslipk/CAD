@@ -71,14 +71,13 @@ class Pagina {
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Eventos<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Visualizar proximos eventos</a></li>
-                <li><a href="#">Eventos passados</a></li>
+                <li><a href="/lista_eventos.php">Visualizar proximos eventos</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Notícias<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/jogo/cadastroJogo.php">Ultimas notícias</a></li>
+                <li><a href="/">Ultimas notícias</a></li>
               </ul>
             </li>
             

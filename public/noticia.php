@@ -10,6 +10,9 @@ class index extends Pagina{
       parent::exibirHead();
       ?>
 <style>
+   h1{
+      text-align: center;
+   }
    .div-resumo{
       padding: 5px;
       background: #DDD;
@@ -18,8 +21,8 @@ class index extends Pagina{
 </style>
 
 <script>
-   function verNoticia(idNoticia){
-      window.location.href = "/noticia.php?noticia="+idNoticia;
+   function verEvento(idEvento){
+      alert(idEvento);
    }
 </script>
 
@@ -28,26 +31,20 @@ class index extends Pagina{
 
    public function exibirBody() {
         parent::exibirBody();
-        $notDao = new NoticiaDao();
-        $noticias = $notDao->getAllNoticias();
+        $noticiaDao = new NoticiaDao();
+        $noticia = $noticiaDao->getNoticiaById($_GET['noticia']);
         ?>
 <div class="container">
    <div class="row">
       <div class="col-sm-12">
-         <?php
-        foreach ($noticias as $noticia){
-           ?>
-         <div id="<?php echo $noticia['id_noticia']; ?>" onclick="verNoticia(this.id)">
-            <h1><?php echo "<h2>{$noticia['titulo']}</h2>"; ?></h1>
-            <div class="div-resumo">
-               <?php echo "<b>Data publicação: ".Ultilitarios::dataHoraFormatadaTexto($noticia['data_publicacao'])."</b>";  ?>
-               <p><?php echo substr($noticia['texto'], 0, 100)."..."; ?></p>
+         <div id="<?php echo $noticia['id_evento']; ?>">
+            <h1><?php echo "<h1>{$noticia['titulo']}</h1>"; ?></h1>
+            <div class="div-evento">
+               <?php echo "<b>Data publicação: ".Ultilitarios::dataHoraFormatadaTexto($noticia['data_publicacao'])."</b><br>";?>             
+               <?php echo "<p>".$noticia['texto']."</p>"; ?>
             </div>
               
-         </div>
-            <?php           
-        }         
-         ?>
+         </div>     
       </div>
       
       <div class="col-sm-8 table-responsive" id="divTabelaAposta">

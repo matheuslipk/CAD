@@ -2,7 +2,7 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require_once $root.'/Ultilitarios.php';
 require_once Ultilitarios::getCaminhoPastaPrincipal().'/especial/Pagina.php';
-require_once Ultilitarios::getCaminhoPastaPrincipal().'/modell/classesDao/NoticiaDao.php';
+require_once Ultilitarios::getCaminhoPastaPrincipal().'/modell/classesDao/EventosDao.php';
 
 class index extends Pagina{
    
@@ -18,8 +18,8 @@ class index extends Pagina{
 </style>
 
 <script>
-   function verNoticia(idNoticia){
-      window.location.href = "/noticia.php?noticia="+idNoticia;
+   function verEvento(idEvento){
+      window.location.href = "/evento.php?evento="+idEvento;
    }
 </script>
 
@@ -28,20 +28,21 @@ class index extends Pagina{
 
    public function exibirBody() {
         parent::exibirBody();
-        $notDao = new NoticiaDao();
-        $noticias = $notDao->getAllNoticias();
+        $eventoDao = new EventosDao();
+        $eventos = $eventoDao->getAllEventos();
         ?>
 <div class="container">
    <div class="row">
       <div class="col-sm-12">
          <?php
-        foreach ($noticias as $noticia){
+        foreach ($eventos as $evento){
            ?>
-         <div id="<?php echo $noticia['id_noticia']; ?>" onclick="verNoticia(this.id)">
-            <h1><?php echo "<h2>{$noticia['titulo']}</h2>"; ?></h1>
+         <div id="<?php echo $evento['id_evento']; ?>" onclick="verEvento(this.id)">
+            <h1><?php echo "<h2>{$evento['titulo']}</h2>"; ?></h1>
             <div class="div-resumo">
-               <?php echo "<b>Data publicação: ".Ultilitarios::dataHoraFormatadaTexto($noticia['data_publicacao'])."</b>";  ?>
-               <p><?php echo substr($noticia['texto'], 0, 100)."..."; ?></p>
+               <?php echo "<b>Data publicação: ".Ultilitarios::dataHoraFormatadaTexto($evento['data_publicacao'])."</b><br>";?>
+               <?php echo "<b>Data evento: ".Ultilitarios::dataHoraFormatadaTexto($evento['data_evento'])."</b>";?>               
+               <p><?php echo substr($evento['descricao'], 0, 100)."..."; ?></p>
             </div>
               
          </div>
