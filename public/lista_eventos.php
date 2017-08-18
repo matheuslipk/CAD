@@ -10,6 +10,15 @@ class index extends Pagina{
       parent::exibirHead();
       ?>
 <style>
+   .evento{
+      background: linear-gradient(#BBB,#DDD);
+      margin-bottom: 10px;
+      border-radius: 5px
+   }
+   h1{
+      text-align: center;
+   }
+   
    .div-resumo{
       padding: 5px;
       background: #DDD;
@@ -37,8 +46,8 @@ class index extends Pagina{
          <?php
         foreach ($eventos as $evento){
            ?>
-         <div id="<?php echo $evento['id_evento']; ?>" onclick="verEvento(this.id)">
-            <h1><?php echo "<h2>{$evento['titulo']}</h2>"; ?></h1>
+         <div class="evento" id="<?php echo $evento['id_evento']; ?>" onclick="verEvento(this.id)">
+            <?php echo "<h2>".substr($evento['titulo'], 0,50)."</h2>"; ?>
             <div class="div-resumo">
                <?php echo "<b>Data publicação: ".Ultilitarios::dataHoraFormatadaTexto($evento['data_publicacao'])."</b><br>";?>
                <?php echo "<b>Data evento: ".Ultilitarios::dataHoraFormatadaTexto($evento['data_evento'])."</b>";?>               

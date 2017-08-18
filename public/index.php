@@ -10,6 +10,11 @@ class index extends Pagina{
       parent::exibirHead();
       ?>
 <style>
+   .noticia{
+      background: linear-gradient(#BBB,#DDD);
+      margin-bottom: 10px;
+      border-radius: 5px
+   }
    h1{
       text-align: center;
    }
@@ -41,8 +46,8 @@ class index extends Pagina{
          <?php
         foreach ($noticias as $noticia){
            ?>
-         <div id="<?php echo $noticia['id_noticia']; ?>" onclick="verNoticia(this.id)">
-            <h1><?php echo "<h2>{$noticia['titulo']}</h2>"; ?></h1>
+         <div class="noticia" id="<?php echo $noticia['id_noticia']; ?>" onclick="verNoticia(this.id)">
+            <?php echo "<h3>".substr($noticia['titulo'], 0,60)."</h3>"; ?>
             <div class="div-resumo">
                <?php echo "<b>Data publicação: ".Ultilitarios::dataHoraFormatadaTexto($noticia['data_publicacao'])."</b>";  ?>
                <p><?php echo substr($noticia['texto'], 0, 100)."..."; ?></p>

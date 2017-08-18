@@ -2,7 +2,6 @@
 $root = $_SERVER['DOCUMENT_ROOT'];
 require_once $root.'/Ultilitarios.php';
 require_once Ultilitarios::getCaminhoPastaPrincipal().'/especial/ConexaoBD.php';
-require_once Ultilitarios::getCaminhoPastaPrincipal().'/modell/classes/Usuario.php';
 
 class UsuarioDao {
    
